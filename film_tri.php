@@ -8,8 +8,8 @@
 </head>
 <body>
   <h1>Films</h1>
-    <FORM>
-    <SELECT name="Réalisateur" size="1">
+    <FORM name = "tri" method="post">
+    <SELECT name="realisateur" >
         <?php
 $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
   if(!$link){
@@ -17,6 +17,7 @@ $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
   }
   $resultat=mysqli_query($link,"SELECT DISTINCT nom FROM Film f JOIN Artiste a ON f.idMes = a.idArtiste");
   if($resultat){
+    echo "<Option>Tous";
     while($film=mysqli_fetch_assoc($resultat)){
 	    echo "<Option>".$film['nom'];
     }
@@ -26,7 +27,8 @@ $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
    }
     mysqli_close($link);
 ?>
-    </SELECT>
+      <input type='submit' name='submit'/>
+    </SELECT >
     </FORM>
   <table>
   <thead>
@@ -42,6 +44,7 @@ $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
   if(!$link){
     die("<p>connexion impossible</p>");
   }
+  if (empty($_POST['realisateur'])) {
   $resultat=mysqli_query($link,"SELECT titre,annee,genre,nom FROM Film f JOIN Artiste a ON f.idMes = a.idArtiste");
   if($resultat){
     while($film=mysqli_fetch_assoc($resultat)){
@@ -56,6 +59,29 @@ $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
    else{
         die("<p>Erreur dans l'éxécution de la requête. </p>");
    }
+  }
+      else{
+   $realisateur = $_POST['realisateur']; 
+        if($realisateur == "Tous"){
+           $resultat=mysqli_query($link,"SELECT titre,annee,genre,nom FROM Film f JOIN Artiste a ON f.idMes = a.idArtiste");
+        }
+        else{
+  $resultat=mysqli_query($link,"SELECT titre,annee,genre,nom FROM Film f JOIN Artiste a ON f.idMes = a.idArtiste WHERE nom = \"$realisateur\"");
+        }
+  if($resultat){
+    while($film=mysqli_fetch_assoc($resultat)){
+      echo "<tr>";
+	    echo "<td>".$film['titre']."</td>";
+	    echo "<td>".$film['annee']."</td>";
+    	echo "<td>".$film['genre']."</td>";
+	    echo "<td>".$film['nom']."</td>";
+	    echo "</tr>";
+    }
+  }
+   else{
+        die("<p>Erreur dans l'éxécution de la requête. </p>");
+   }
+  }
     mysqli_close($link);
 ?>
   </table>
