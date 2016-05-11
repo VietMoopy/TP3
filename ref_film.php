@@ -18,6 +18,15 @@
     </tr>
   </thead>
     <?php
+		
+		//Plusieurs fichiers : +0.5		
+		//Fonctionnement : +1
+		//Code Clair : +1
+		//Plusieurs commits : +0.5
+		
+		//4/4
+		
+		
 $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
   if(!$link){
     die("<p>connexion impossible</p>");

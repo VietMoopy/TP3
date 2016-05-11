@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -18,11 +19,20 @@
     </tr>
   </thead>
     <?php
+    
+    //Fonctionnement : +4
+    //Plusieurs fichiers : +1
+    //Fichiers commités plusieurs fois : +1
+    //Code compréhensible : +1
+    //Bonus code lisible : +1
+    
+    //8/8
+    
 $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
   if(!$link){
     die("<p>connexion impossible</p>");
   }
-  $resultat=mysqli_query($link,"SELECT titre,annee,genre,nom FROM Film f JOIN Artiste a ON f.idMes = a.idArtiste");
+  $resultat=mysqli_query($link,"SELECT titre,annee,genre,nom FROM Film f JOIN Artiste a ON f.idMes = a.idArtiste"); 
   if($resultat){
     while($film=mysqli_fetch_assoc($resultat)){
       echo "<tr>";

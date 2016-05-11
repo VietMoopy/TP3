@@ -40,6 +40,16 @@ $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
     </tr>
   </thead>
     <?php
+    
+    //Fonctionnement : +4
+    //Plusieurs fichiers et noms clairs: +1
+    //Bonus pour afficher tout les réal dans la liste : +1
+    //Code clair : +1
+    //Plusieurs commit : +1
+    
+    //8/8
+    
+    
 $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
   if(!$link){
     die("<p>connexion impossible</p>");
