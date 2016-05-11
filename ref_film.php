@@ -22,15 +22,17 @@ $link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
   if(!$link){
     die("<p>connexion impossible</p>");
   }
-  $resultat=mysqli_query($link,"SELECT titre,annee,genre,nom FROM Film f JOIN Artiste a ON f.idMes = a.idArtiste");
+  $resultat=mysqli_query($link,"SELECT idFilm,titre,annee,genre,nom FROM Film f JOIN Artiste a ON f.idMes = a.idArtiste");
   if($resultat){
+    $i = 1;
     while($film=mysqli_fetch_assoc($resultat)){
       echo "<tr>";
-	    echo "<td>".$film['titre']."</td>";
+	    echo "<td><a href=\"./fiche.php?film=$i\">".$film['titre']."</a></td>";
 	    echo "<td>".$film['annee']."</td>";
     	echo "<td>".$film['genre']."</td>";
 	    echo "<td>".$film['nom']."</td>";
 	    echo "</tr>";
+      $i = $i + 1;
     }
   }
    else{
