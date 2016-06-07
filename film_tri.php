@@ -11,7 +11,7 @@
     <FORM name = "tri" method="post">
     <SELECT name="realisateur" >
         <?php
-$link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
+$link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","nguyenphpmyadmin","nguyen");
   if(!$link){
     die("<p>connexion impossible</p>");
   }
