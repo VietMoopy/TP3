@@ -28,7 +28,7 @@
     
     //8/8
     
-$link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","080382Alex","nguyen");
+$link=mysqli_connect("dwarves.iut-fbleau.fr","nguyen","nguyenphpmyadmin","nguyen");
   if(!$link){
     die("<p>connexion impossible</p>");
   }
